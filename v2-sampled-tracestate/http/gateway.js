@@ -9,7 +9,7 @@ const tracingBackendIp = config.tracingBackend.ip;
 const tracingBackendPort = config.tracingBackend.port;
 
 const HTTP_PORT = config.gateway.ports.http;
-const HTTP_SPAN_PORT = config.ports.httpSpan;
+const HTTP_SPAN_PORT = config.gateway.ports.httpSpan;
 
 function sendSpan(span, host = tracingBackendIp, port = tracingBackendPort) {
   return new Promise((resolve, reject) => {
