@@ -3,7 +3,7 @@ const ISpan = require('../span/iotSpan.js');
 const CPUMonitor = require('../cpuMonitor.js');
 const config = require('../config.js');
 
-const coapSpanServerIp = config.gateway.ip;
+const coapSpanServerIp = config.gateway.lanIp;
 const coapSpanServerPort = config.gateway.ports.coapSpan;
 
 const COAP_PORT = config.server.port;

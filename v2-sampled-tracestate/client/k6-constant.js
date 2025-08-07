@@ -15,8 +15,8 @@ export const options = {
       executor: "constant-arrival-rate",
       rate: RPS,
       timeUnit: "1s",
-      duration: "30s",
-      preAllocatedVUs: Math.min(RPS * 2, 100),
+      duration: "1m",
+      preAllocatedVUs: 2,
       maxVUs: 500,
     },
   },
@@ -32,7 +32,7 @@ export default function () {
 
   const gatewayHost = __ENV.GATEWAY_HOST;
   const gatewayPort = __ENV.GATEWAY_PORT;
-  const url = `http://${gatewayHost}:${gatewayPort}/iot-test`;
+  const url = `http://${gatewayHost}:${gatewayPort}/`;
 
   let res = http.get(url, {
     headers: {

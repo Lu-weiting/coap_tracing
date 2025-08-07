@@ -3,7 +3,7 @@ const Span = require('../span/span.js');
 const CPUMonitor = require('../cpuMonitor.js');
 const config = require('../config.js');
 
-const coapSpanServerIp = config.gateway.ip;
+const coapSpanServerIp = config.gateway.lanIp;
 const coapSpanServerPort = config.gateway.ports.coapSpan;
 
 const COAP_PORT = config.server.port;
@@ -81,7 +81,7 @@ const serverA = coap.createServer(async (req, res) => {
 });
 
 serverA.listen(COAP_PORT, () => {
-  // console.log(`Server A is listening on port ${COAP_PORT}`);
+  console.log(`Server A is listening on port ${COAP_PORT}`);
 });
 
 // === CPU 監控設置 ===

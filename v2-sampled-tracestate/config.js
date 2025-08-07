@@ -1,25 +1,27 @@
-require("dotenv").config();
+require("dotenv").config({ path: require('path').join(__dirname, '.env') });
 
 const config = {
   // Server Configuration (coap server)
   server: {
-    ip: process.env.SERVER_IP || "localhost",
+    ip: process.env.SERVER_IP || "10.10.10.3",
     port: parseInt(process.env.SERVER_PORT) || 5683,
   },
 
   // Tracing Backend Configuration (spans_handler)
   tracingBackend: {
-    ip: process.env.TRACING_BACKEND_IP || "localhost",
+    ip: process.env.TRACING_BACKEND_IP || "192.168.50.113",
     port: parseInt(process.env.TRACING_BACKEND_PORT) || 3001,
   },
   gateway: {
-    ip: process.env.GATEWAY_IP || "localhost",
+    ip: process.env.GATEWAY_IP || "192.168.50.142",
+    lanIp: "10.10.10.1",
     ports: {
       http: parseInt(process.env.HTTP_PORT) || 3000,
       coapSpan: parseInt(process.env.COAP_SPAN_PORT) || 3002,
       httpSpan: parseInt(process.env.HTTP_SPAN_PORT) || 3002,
     },
   },
+
 };
 
 // 驗證配置

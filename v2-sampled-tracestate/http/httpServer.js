@@ -3,7 +3,7 @@ const CPUMonitor = require('../cpuMonitor.js');
 const http = require('http');
 const config = require('../config.js');
 
-const httpSpanServerIp = config.gateway.ip;
+const httpSpanServerIp = config.gateway.lanIp;
 const httpSpanServerPort = config.gateway.ports.httpSpan;
 
 const HTTP_PORT = config.server.port;

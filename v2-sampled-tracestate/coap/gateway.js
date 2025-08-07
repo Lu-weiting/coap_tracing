@@ -137,7 +137,7 @@ const spanCollector = coap.createServer(async(req, res) => {
 });
 
 spanCollector.listen(COAP_SPAN_PORT, () => {
-  // console.log(`Server A is listening on port ${COAP_SPAN_PORT}`);
+  console.log(`Server A is listening on port ${COAP_SPAN_PORT}`);
 });
 
 // === CPU 監控設置 ===
