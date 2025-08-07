@@ -60,7 +60,7 @@ function sendSpan(span, host = tracingBackendIp, port = tracingBackendPort) {
       // Send the data
       req.write(data);
       req.end();
-      console.log("send span to spans_handler");
+      // console.log("send span to spans_handler");
   });
 }
 
@@ -68,8 +68,8 @@ let traceMap = new Map();
 
 // Create an HTTP server
 const server = http.createServer((httpReq, httpRes) => {
-  console.log('received a request:', httpReq.method, httpReq.url);
-  // console.log('Headers:', httpReq.headers);
+  // console.log('received a request:', httpReq.method, httpReq.url);
+  // // console.log('Headers:', httpReq.headers);
 
   let body = '';
 
@@ -80,7 +80,7 @@ const server = http.createServer((httpReq, httpRes) => {
 
   // When request is complete
   httpReq.on('end', () => {
-    // console.log('Body:', body || 'No body');
+    // // console.log('Body:', body || 'No body');
     
     let responseBody = '';
     let span = new Span('Gateway-HTTP', httpReq.headers.traceparent);
@@ -101,7 +101,7 @@ const server = http.createServer((httpReq, httpRes) => {
     // coapReq.setOption("65002", span.getTraceId().slice(-8)); // traceparent
 
     coapReq.on('response', (coapRes) => {
-      console.log('get response:', coapRes.payload.toString());
+      // console.log('get response:', coapRes.payload.toString());
       responseBody = coapRes.payload.toString()
       // Respond to the client
       httpRes.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -132,13 +132,13 @@ const spanCollector = coap.createServer(async(req, res) => {
   if (req.method === 'POST' && req.url === '/span') {
     const span = JSON.parse(req.payload.toString());
     span.traceId = traceMap.get(span.traceId);
-    console.log('received a span from coap devices:', span);
+    // console.log('received a span from coap devices:', span);
     sendSpan(span);      
   }
 });
 
 spanCollector.listen(COAP_SPAN_PORT, () => {
-  console.log(`Server A is listening on port ${COAP_SPAN_PORT}`);
+  // console.log(`Server A is listening on port ${COAP_SPAN_PORT}`);
 });
 
 // === CPU 監控設置 ===
@@ -147,7 +147,7 @@ cpuMonitor.start();
 
 // === 程式結束時的處理 ===
 process.on('SIGINT', () => {
-  console.log('Received SIGINT. Shutting down gracefully...');
+  // console.log('Received SIGINT. Shutting down gracefully...');
   
   // 停止 CPU 監控
   cpuMonitor.stop();

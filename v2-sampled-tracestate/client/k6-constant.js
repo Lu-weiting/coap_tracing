@@ -37,7 +37,7 @@ export default function () {
   let res = http.get(url, {
     headers: {
       traceparent: traceHeader,
-      "Content-Type": "application/json",
+      // "Content-Type": "application/json",
     },
   });
   check(res, { "status 200": (r) => r.status === 200 });

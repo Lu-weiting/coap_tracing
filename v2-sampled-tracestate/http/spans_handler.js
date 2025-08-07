@@ -16,7 +16,7 @@ if (!fs.existsSync(logFilePath)) {
       req.on('end', () => {
         try {
           const span = JSON.parse(body);
-          // console.log('Received span:', span);
+          // // console.log('Received span:', span);
   
           fs.appendFile(logFilePath, JSON.stringify(span) + '\n', err => {
             if (err) {

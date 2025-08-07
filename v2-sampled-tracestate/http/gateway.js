@@ -49,7 +49,7 @@ function sendSpan(span, host = tracingBackendIp, port = tracingBackendPort) {
     // Send the data
     req.write(data);
     req.end();
-    console.log("send span to spans_handler");
+    // console.log("send span to spans_handler");
   });
 }
 
@@ -86,8 +86,8 @@ function httpClient(options, data = null) {
 
 // Create an HTTP server
 const server = http.createServer((httpReq, httpRes) => {
-  console.log('received a request:', httpReq.method, httpReq.url);
-  // console.log('Headers:', httpReq.headers);
+  // console.log('received a request:', httpReq.method, httpReq.url);
+  // // console.log('Headers:', httpReq.headers);
 
   let body = '';
 
@@ -98,7 +98,7 @@ const server = http.createServer((httpReq, httpRes) => {
 
   // When request is complete
   httpReq.on('end', () => {
-    // console.log('Body:', body || 'No body');
+    // // console.log('Body:', body || 'No body');
 
     let span = new Span('Gateway-HTTP', httpReq.headers.traceparent);
 
@@ -114,7 +114,7 @@ const server = http.createServer((httpReq, httpRes) => {
 
       try {
         const response = await httpClient(options);
-        console.log('get user function response:', response);
+        // console.log('get user function response:', response);
         httpRes.writeHead(200, { 'Content-Type': 'text/plain' });
         httpRes.end(response.body);
         if(span.getFlag() === '01') {
@@ -149,7 +149,7 @@ const spanCollector = http.createServer((req, res) => {
     req.on('end', () => {
       try {
         const span = JSON.parse(body);
-        console.log('received a span from http devices:', span);
+        // console.log('received a span from http devices:', span);
         sendSpan(span);
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ status: 'ok' }));
@@ -165,7 +165,7 @@ const spanCollector = http.createServer((req, res) => {
 });
 
 spanCollector.listen(HTTP_SPAN_PORT, () => {
-  console.log(`Server A is listening on port ${HTTP_SPAN_PORT}`);
+  // console.log(`Server A is listening on port ${HTTP_SPAN_PORT}`);
 });
 
 // === CPU 監控設置 ===
@@ -174,7 +174,7 @@ cpuMonitor.start();
 
 // === 程式結束時的處理 ===
 process.on('SIGINT', () => {
-  console.log('Received SIGINT. Shutting down gracefully...');
+  // console.log('Received SIGINT. Shutting down gracefully...');
   
   // 停止 CPU 監控
   cpuMonitor.stop();
