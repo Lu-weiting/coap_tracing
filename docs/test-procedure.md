@@ -15,3 +15,13 @@ docker run -i --rm \
     -e GATEWAY_PORT=3000 \
     grafana/k6 run - < ./load-test/k6.js
 ```
+
+nvm alias default 22.18.0
+
+SAMPLE_RATE=0.1 GATEWAY_HOST= GATEWAY_PORT= k6 run k6.js
+
+k6 run k6-contant.js 
+
+k6 run k6-ramping-saturation.js -e TRACESTATE_SIZE=16 -e MAX_VUS=200 -e GATEWAY_HOST=192.168.50.142 -e GATEWAY_PORT=3000
+
+k6 run k6-constant-cpu.js -e GATEWAY_HOST=192.168.50.142 -e GATEWAY_PORT=3000 TRACESTATE_SIZE=16 -e TARGET_VUS=80

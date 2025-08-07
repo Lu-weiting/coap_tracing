@@ -1,0 +1,30 @@
+{
+  "summary": {
+    "serviceName": "Gateway",
+    "totalRunningTime": 2.45,
+    "averageCPUUsage": 0.25,
+    "peakCPUUsage": 0.36,
+    "minCPUUsage": 0.1,
+    "totalRecords": 3
+  },
+  "records": [
+    {
+      "timestamp": "2025-08-06T09:49:15.449Z",
+      "cpuPercent": 0.36,
+      "elapsedSec": 1,
+      "serviceName": "Gateway"
+    },
+    {
+      "timestamp": "2025-08-06T09:49:16.450Z",
+      "cpuPercent": 0.1,
+      "elapsedSec": 1,
+      "serviceName": "Gateway"
+    },
+    {
+      "timestamp": "2025-08-06T09:49:16.897Z",
+      "cpuPercent": 0.33,
+      "elapsedSec": 0.45,
+      "serviceName": "Gateway"
+    }
+  ]
+}
