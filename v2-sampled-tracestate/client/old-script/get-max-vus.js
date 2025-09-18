@@ -123,9 +123,7 @@ export default function () {
     headers: {
       traceparent: traceHeader,
       tracestate: tracestateContent,
-      "Content-Type": "application/json",
     },
-    timeout: "10s",
   });
   const endTime = Date.now();
   

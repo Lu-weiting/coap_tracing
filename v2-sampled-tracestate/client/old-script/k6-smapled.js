@@ -5,6 +5,7 @@ import { randomBytes } from "k6/crypto";
 const RPS = __ENV.RPS ? parseInt(__ENV.RPS) : 5;
 const SAMPLE_RATE = __ENV.SAMPLE_RATE ? parseFloat(__ENV.SAMPLE_RATE) : 1.0; // 1.0 = 100%
 
+
 function toHex(arrayBuffer) {
   return Array.from(new Uint8Array(arrayBuffer))
     .map((b) => b.toString(16).padStart(2, "0"))

@@ -22,6 +22,29 @@ SAMPLE_RATE=0.1 GATEWAY_HOST= GATEWAY_PORT= k6 run k6.js
 
 k6 run k6-contant.js 
 
-k6 run k6-ramping-saturation.js -e TRACESTATE_SIZE=16 -e MAX_VUS=200 -e GATEWAY_HOST=192.168.50.142 -e GATEWAY_PORT=3000
+k6 run get-max-vus.js -e TRACESTATE_SIZE=0 -e MAX_VUS=10000 -e GATEWAY_HOST=192.168.50.142 -e GATEWAY_PORT=3000
 
-k6 run k6-constant-cpu.js -e GATEWAY_HOST=192.168.50.142 -e GATEWAY_PORT=3000 TRACESTATE_SIZE=16 -e TARGET_VUS=80
+k6 run k6-constant-vus.js -e GATEWAY_HOST=192.168.50.142 -e GATEWAY_PORT=3000 -e TRACESTATE_SIZE=0 -e TARGET_VUS=35
+
+k6 run k6-constant-vus.js \
+  -e TARGET_VUS=30 \
+  -e TRACESTATE_SIZE=0 \
+  -e SAMPLE_RATE=0.1 \
+  -e GATEWAY_HOST=192.168.50.142 \
+  -e GATEWAY_PORT=3000
+
+
+k6 run \
+  --quiet \
+  -e RPS=2 \
+  -e GATEWAY_HOST=192.168.50.142 \
+  -e GATEWAY_PORT=3000 \
+  "k6-constant.js"  
+
+  
+  SLEEP_BETWEEN=3 MAX_RPS=2 ./run_steps.sh
+
+MAX_RPS=2 STEP_DURATION=20s SLEEP_BETWEEN=3 ./run_multi_scenarios.sh
+
+
+MAX_RPS=2 STEP_DURATION=20s SLEEP_BETWEEN=3 ./run_multi_scenarios_json.sh

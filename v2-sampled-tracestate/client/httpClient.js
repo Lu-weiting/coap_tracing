@@ -3,7 +3,7 @@ const Span = require('../span/span.js');
 const config = require('../config.js');
 
 
-const gatewayIp = process.env.GATEWAY_IP;
+const gatewayIp = config.gateway.ip;
 const gatewayPort = config.gateway.ports.http;
 const tracingBackendIp = config.tracingBackend.ip;
 const tracingBackendPort = config.tracingBackend.port;
@@ -54,7 +54,6 @@ function sendSpan(span, host = tracingBackendIp, port = tracingBackendPort) {
 // HTTP Client with Trace Context
 function httpClient(options, data = null) {
   return new Promise((resolve, reject) => {
-    console.log(process.env.GATEWAY_IP)
     let span = new Span('HTTP Client');
 
     span.setFlag('01'); // Set flag to indicate this is a client span
@@ -111,6 +110,7 @@ function httpClient(options, data = null) {
   };
 
   try {
+    
     const response = await httpClient(options);
     console.log('get user function response:', response);
   } catch (error) {

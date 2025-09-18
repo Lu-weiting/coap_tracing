@@ -10,14 +10,16 @@ function toHex(arrayBuffer) {
 }
 
 export const options = {
+  gracefulStop: '0s',
   scenarios: {
     constant_rate_test: {
       executor: "constant-arrival-rate",
       rate: RPS,
       timeUnit: "1s",
-      duration: "1m",
-      preAllocatedVUs: 2,
+      duration: "20s",
+      preAllocatedVUs: 15,
       maxVUs: 500,
+      gracefulStop: '0s',
     },
   },
 };
@@ -34,11 +36,10 @@ export default function () {
   const gatewayPort = __ENV.GATEWAY_PORT;
   const url = `http://${gatewayHost}:${gatewayPort}/`;
 
-  let res = http.get(url, {
+  http.get(url, {
     headers: {
       traceparent: traceHeader,
       // "Content-Type": "application/json",
     },
   });
-  check(res, { "status 200": (r) => r.status === 200 });
 }
