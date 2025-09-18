@@ -5,7 +5,7 @@ OUTDIR="${OUTDIR:-out}"
 CSV="${CSV:-results.csv}"
 MAX_RPS="${MAX_RPS:-100}"  
 SLEEP_BETWEEN="${SLEEP_BETWEEN:-3}"   
-STEP_DURATION="${STEP_DURATION:-30}"
+STEP_DURATION="${STEP_DURATION:-22}"
 
 mkdir -p "$OUTDIR"
 # 先寫 CSV 表頭

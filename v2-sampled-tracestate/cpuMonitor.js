@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 class CPUMonitor {
-  constructor(serviceName = 'Unknown Service', logToFile = false, reportIntervalSec = 20) {
+  constructor(serviceName = 'Unknown Service', logToFile = false, reportIntervalSec = 22) {
     this.serviceName = serviceName;
     this.logToFile = logToFile;
     this.reportIntervalSec = reportIntervalSec; // 統整報告間隔（秒）
