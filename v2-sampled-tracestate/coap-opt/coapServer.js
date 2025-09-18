@@ -72,14 +72,14 @@ const serverA = coap.createServer(async (req, res) => {
     res.end(`a`);
     if(span.getFlag() === '01') {
       span.addEndTime();
-      span.logSpan();
+//      span.logSpan();
       sendSpan(span);
     }
   }
 });
 
 serverA.listen(COAP_PORT, () => {
-  // console.log(`Server A is listening on port ${COAP_PORT}`);
+  console.log(`Server A is listening on port ${COAP_PORT}`);
 });
 
 // === CPU 監控設置 ===
