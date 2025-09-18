@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 class CPUMonitor {
-  constructor(serviceName = 'Unknown Service', logToFile = true) {
+  constructor(serviceName = 'Unknown Service', logToFile = false) {
     this.serviceName = serviceName;
     this.logToFile = logToFile;
     

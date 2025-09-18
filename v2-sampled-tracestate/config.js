@@ -4,7 +4,7 @@ const config = {
   // Server Configuration (coap server)
   server: {
     ip: process.env.SERVER_IP || "10.10.10.3",
-    port: parseInt(process.env.SERVER_PORT) || 5683,
+    port: parseInt(process.env.SERVER_PORT) || 5682,
   },
 
   // Tracing Backend Configuration (spans_handler)
